@@ -4,37 +4,47 @@ console.log(titulo.textContent);
 
 titulo.textContent = "Aparecida Nutricionista";
 
-var paciente = document.querySelector("#primeiro-paciente");
-console.log(paciente);
+var pacientes = document.querySelectorAll(".paciente");
+console.log(pacientes);
 
-var tdPeso = paciente.querySelector(".info-peso");
-console.log(tdPeso);
-var peso = tdPeso.textContent;
-console.log(peso);
+for(var i = 0; i < pacientes.length; i++){
+    console.log(pacientes[i]);
 
-var tdAltura = paciente.querySelector(".info-altura");
-console.log(tdAltura);
-var altura = tdAltura.textContent;
-console.log(altura);
+    var paciente = pacientes[i];
 
-var tdImc = paciente.querySelector(".info-imc");
+    var tdPeso = paciente.querySelector(".info-peso");
+    console.log(tdPeso);
+    var peso = tdPeso.textContent;
+    console.log(peso);
 
-var pesoValido = true;
-var alturaValida = true;
+    var tdAltura = paciente.querySelector(".info-altura");
+    console.log(tdAltura);
+    var altura = tdAltura.textContent;
+    console.log(altura);
 
-if(peso <= 0 || peso >= 1000) {
-    console.log("Peso Inválido");
-    pesoValido = false;
-    tdImc.textContent = "Peso Inválido!";
-}
+    var tdImc = paciente.querySelector(".info-imc");
 
-if(altura <= 0 || altura >= 3.00) {
-    console.log("Altura Inválido");
-    alturaValida = false;
-    tdImc.textContent = "Altura Inválida!";
-}
+    var pesoValido = true;
+    var alturaValida = true;
 
-if(pesoValido && alturaValida) {
-    var imc = peso / (altura * altura);
-    tdImc.textContent = imc;
+    if(peso <= 0 || peso >= 1000) {
+        console.log("Peso Inválido");
+        pesoValido = false;
+        tdImc.textContent = "Peso Inválido!";
+        //paciente.style.color = "red";
+        paciente.classList.add("paciente-invalido");
+    }
+
+    if(altura <= 0 || altura >= 3.00) {
+        console.log("Altura Inválido");
+        alturaValida = false;
+        tdImc.textContent = "Altura Inválida!";
+        //paciente.style.backgroundColor = "lightcoral";
+        paciente.classList.add("paciente-invalido");
+    }
+
+    if(pesoValido && alturaValida) {
+        var imc = peso / (altura * altura);
+        tdImc.textContent = imc.toFixed(2);
+    }
 }
