@@ -137,3 +137,15 @@ button[disabled=disabled], button:disabled {
 .paciente-invalido {
 	background-color: lightcoral;
 }
+
+.vanish {	
+    -webkit-animation: desaparece 2s;
+            animation: desaparece 2s;
+}
+
+@keyframes desaparece {
+    100% {
+        opacity: 0;
+        transform: scale(0.001);
+	}
+}

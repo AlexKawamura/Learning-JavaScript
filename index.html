@@ -25,7 +25,7 @@
 		</header>
 		<main>
 			<section class="container">
-				<h2>Meus pacientes</h2>
+				<h2 class="subtitulo">Meus pacientes</h2>
 				<table>
 					<thead>
 						<tr>
@@ -82,7 +82,7 @@
 		</main>
 
 	</body>
-	
+
 	<section class="container">
 		<h2 id="titulo-form">Adicionar novo paciente</h2>
 		<form id="form-adiciona">
@@ -107,13 +107,42 @@
 		</form>
 	</section>
 
-	<script src="js/pincipal.js">
+	<script src="js/form.js"></script>
+	<script src="js/calcula-imc.js"></script>
+	<script>
 		//console.log(document.querySelector("h1"));
 		//var titulo = document.querySelector(".titulo");
 		//console.log(titulo);
 		//console.log(titulo.textContent);
 
 		//titulo.textContent = "Aparecida Nutricionista";
+
+		var titulo = document.querySelector(".titulo");
+		console.log(titulo);
+		console.log(titulo.textContent);
+
+		titulo.textContent = "Aparecida Nutricionista";
+
+		titulo.addEventListener("click",
+			function() {
+				alert("Exite um Easter Egg");
+			}
+		);
+
+		var subtitulo = document.querySelector(".subtitulo");
+		subtitulo.addEventListener("click", enigma1);
+
+		function enigma1() {
+			var pacientes = document.querySelectorAll(".paciente");
+			var gordura = pacientes[2].querySelector(".info-gordura");
+			gordura.textContent = "Easter Egg";
+			gordura.style.color = "red";
+			gordura.addEventListener("click", function() {
+				var body = document.querySelector("body");
+				body.classList.add("vanish");
+			});
+		}
+		
 	</script>
 
 </html>
