@@ -77,6 +77,8 @@ function montaTr(paciente) {
     trPaciente.appendChild(montaTd(paciente.gordura, "info-gordura"));
     trPaciente.appendChild(montaTd(paciente.imc, "info-imc"));
 
+    trPaciente.classList.add("paciente");
+
     return trPaciente;
 }
 
