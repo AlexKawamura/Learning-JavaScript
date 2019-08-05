@@ -6,18 +6,55 @@ botaoAdicionar.addEventListener("click",
         var form = document.querySelector("#form-adiciona");
         //Extraindo informaçãoes do formulário
         var paciente = obtemInformacaoDoForm(form);
+        var erros = validaPaciente(paciente);
+
+        if(erros.length > 0) {
+            exibeMensagensDeErro(erros);
+            return;
+        }
 
         //Monta tr e td do paciente
         var trPaciente = montaTr(paciente);
-
         var tabela = document.querySelector("#tabela-pacientes");
 
         tabela.appendChild(trPaciente);
 
         form.reset();
 
+        var mensagensErro = document.querySelector("#mensagens-erro");
+        mensagensErro.innerHTML = "";
+
     }
 );
+
+function exibeMensagensDeErro(erros) {
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = "";
+    erros.forEach(function(erro) {
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+}
+
+function validaPaciente(paciente) {
+    var erros = [];
+
+    if(!validaPeso(paciente.peso)) {
+        erros.push("Peso é inválido");
+    }
+    if(!validaAltura(paciente.altura)) {
+        erros.push("Altura é inválida");
+    }
+    if(paciente.nome.length == 0) {
+        erros.push("O campo nome está vazio");
+    }
+    if(paciente.gordura.length == 0) {
+        erros.push("O campo gordura está vazio");
+    }
+
+    return erros;
+}
 
 function obtemInformacaoDoForm(form) {
     var Paciente = {
