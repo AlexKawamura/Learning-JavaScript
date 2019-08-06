@@ -40,21 +40,26 @@ function inicializaCronometro() {
             tempoDigi--;
             $("#tempo-digitacao").text(tempoDigi);
             if(tempoDigi < 1) {
-                campo.attr("disabled", true);
                 clearInterval(IDcronometro);
-                botaoRestart.attr("disabled", false);
-                //campo.css("background-color", "lightgray"); Não é uma boa prática
-                //campo.addClass("campo-desativado"); //Apenas desativa
-                campo.toggleClass("campo-desativado"); // Desativa e ativa novamente
+                finalizaJogo();
             }
         }, 1000);
         botaoRestart.attr("disabled", true);
     });
 }
 
+function finalizaJogo() {
+    campo.attr("disabled", true);
+    botaoRestart.attr("disabled", false);
+    //campo.css("background-color", "lightgray"); //Não é uma boa prática
+    //campo.addClass("campo-desativado"); //Apenas desativa
+    campo.toggleClass("campo-desativado"); // Desativa e ativa novamente
+    inserePlacar();
+}
+
 function reiniciaJogo() {
     $("#contador-palavras").text(0);
-    $("#contador-caracteres").text(0);
+    $("#contador-caracteres").text(0); 
     $("#tempo-digitacao").text(tempoInicial);
     campo.val("");
     campo.attr("disabled", false);
@@ -78,4 +83,16 @@ function inicializaMarcadores() {
         }
         //.startsWith(); Substituto para afunção .substr()
     });
+}
+
+function inserePlacar() {
+    var corpoTabela = $(".placar").find("tbody");
+    var usuario = "Alexandre";
+    var numPalavras = $("#contador-palavras").text();
+    var linha = "<tr>" + 
+                "<td>" + usuario + "</td>" +
+                "<td>" + numPalavras + "</td>" +
+                "</tr>";
+    //corpoTabela.append(linha); //Adiciona por último
+    corpoTabela.prepend(linha); //Adiciona no começo
 }
