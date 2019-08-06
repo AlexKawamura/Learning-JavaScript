@@ -1,13 +1,10 @@
 var frase = $(".frase") /* ou jQuery(".frase") */ ;
 
 var numPalavras = frase.text().split(" ").length;
-            /*  = frase.text;
-             *  = numPalavras.split(" ");
-             *  = numPalavras.length; */
+$("#tamanho-frase").text(numPalavras);
 
-var tamanhaFrase = $("#tamanho-frase").text(numPalavras);
-            /*   = $("#tamanho-frase")
-             *   = tamanhoFrase.text(numPalavras); */
+var numCaracteres = frase.text();
+$("#qnt-caracteres").text(numCaracteres.length);
 
 var campo = $(".campo-digitacao");
 campo.on("input", function() {
@@ -20,3 +17,14 @@ campo.on("input", function() {
     $("#contador-caracteres").text(qntCaracteres);
 });
 
+var tempoDigi = $("#tempo-digitacao").text();
+campo.one("focus", function() {
+    var IDcronometro = setInterval(function(){
+        tempoDigi--;
+        $("#tempo-digitacao").text(tempoDigi);
+        if(tempoDigi < 1) {
+            campo.attr("disabled", true);
+            clearInterval(IDcronometro);
+        }
+    }, 1000);
+});
