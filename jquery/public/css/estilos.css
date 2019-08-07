@@ -41,3 +41,12 @@ body {
 #loader {
     display: none;
 }
+
+#botao-buscar {
+    
+}
+
+#frase-id {
+    border:1px solid black;
+    width: 40px;
+}

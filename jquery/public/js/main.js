@@ -2,6 +2,7 @@ var tempoInicial = $("#tempo-digitacao").text();
 var campo = $(".campo-digitacao");
 var botaoRestart = $("#botao-reiniciar");
 var frase = $(".frase") /* ou jQuery(".frase") */ ;
+var botaoBusca = $("#botao-buscar");
 
 /* $(function(){...}); ou $(document).ready(function(){...}); */
 
@@ -12,7 +13,19 @@ $(function() {
     inicializaMarcadores();
     $(".botao-remover").click(removeLinha);
     botaoRestart.click(reiniciaJogo); /* .on("click", ) */
+    desabilitaBusca();
 });
+
+function desabilitaBusca(){
+    botaoBusca.attr("disabled", true);
+    $("#frase-id").on("input", function() {
+        if($("#frase-id").val() == ""){
+            botaoBusca.attr("disabled", true);
+        } else {
+            botaoBusca.attr("disabled", false);
+        }
+    });
+}
 
 function atualizaTamanhoFrase() {
     var numPalavras = frase.text().split(" ").length;
