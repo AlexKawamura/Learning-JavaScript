@@ -22,6 +22,11 @@ function atualizaTamanhoFrase() {
     $("#qnt-caracteres").text(numCaracteres.length);
 }
 
+function atualizaTempoInicial(tempo) {
+    tempoInicial = tempo;
+    $("#tempo-digitacao").text(tempo);
+}
+
 function inicializaContadores() {
     campo.on("input", function() {
         var conteudo = campo.val();
@@ -35,8 +40,8 @@ function inicializaContadores() {
 }
 
 function inicializaCronometro() {
-    var tempoDigi = $("#tempo-digitacao").text();
     campo.one("focus", function() {
+        var tempoDigi = $("#tempo-digitacao").text();
         var IDcronometro = setInterval(function(){
             tempoDigi--;
             $("#tempo-digitacao").text(tempoDigi);
