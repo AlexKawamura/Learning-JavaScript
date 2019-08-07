@@ -1,7 +1,20 @@
 $("#botao-frase").click(requisitaFrases);
 
 function requisitaFrases() {
-    $.get("http://localhost:3000/frases", fraseAleatoria);
+    $(".frase").hide();
+    $("#loader").toggle();
+
+    $.get("http://localhost:3000/frases", fraseAleatoria)
+    .fail(function() {
+        $("#erro").show();
+        setTimeout(function() {
+            $("#erro").hide();
+        }, 2000);
+    })
+    .always(function() {
+        $(".frase").show();
+        $("#loader").toggle();
+    });
 }
 
 function fraseAleatoria(data) {
