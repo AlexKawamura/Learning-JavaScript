@@ -10,6 +10,7 @@ $(function() {
     inicializaContadores();
     inicializaCronometro();
     inicializaMarcadores();
+    $(".botao-remover").click(removeLinha);
     botaoRestart.click(reiniciaJogo); /* .on("click", ) */
 });
 
@@ -83,16 +84,4 @@ function inicializaMarcadores() {
         }
         //.startsWith(); Substituto para afunção .substr()
     });
-}
-
-function inserePlacar() {
-    var corpoTabela = $(".placar").find("tbody");
-    var usuario = "Alexandre";
-    var numPalavras = $("#contador-palavras").text();
-    var linha = "<tr>" + 
-                "<td>" + usuario + "</td>" +
-                "<td>" + numPalavras + "</td>" +
-                "</tr>";
-    //corpoTabela.append(linha); //Adiciona por último
-    corpoTabela.prepend(linha); //Adiciona no começo
 }
