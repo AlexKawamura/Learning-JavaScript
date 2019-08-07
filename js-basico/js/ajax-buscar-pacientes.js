@@ -1,3 +1,5 @@
+// AJAX
+
 var botaoBuscar = document.querySelector("#buscar-pacientes");
 
 botaoBuscar.addEventListener("click", function() {
