@@ -11,9 +11,10 @@ $(function() {
     inicializaContadores();
     inicializaCronometro();
     inicializaMarcadores();
+    desabilitaBusca();
+    atualizaPlacar();
     $(".botao-remover").click(removeLinha);
     botaoRestart.click(reiniciaJogo); /* .on("click", ) */
-    desabilitaBusca();
 });
 
 function desabilitaBusca(){
