@@ -54,3 +54,16 @@ body {
 #botao-sinc {
     float: right;
 }
+
+.select-usuarios {
+    display: inline-block;
+}
+
+#usuarios {
+    display: block;
+}
+
+.selectize-input {
+    width: 150px;
+    vertical-align: middle;
+}

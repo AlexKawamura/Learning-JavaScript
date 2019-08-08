@@ -7,7 +7,7 @@ function requisitaFrases() {
     $(".frase").hide();
     $("#loader").toggle();
 
-    $.get("http://localhost:3000/frases", fraseAleatoria)
+    $.get("http://localhost:3001/frases", fraseAleatoria)
     .fail(function() {
         $("#erro").show();
         setTimeout(function() {
@@ -36,7 +36,7 @@ function buscaFrase() {
     var fraseId = $("#frase-id").val();
     var dados = {id: fraseId};
 
-    $.get("http://localhost:3000/frases", dados, trocaFrase)
+    $.get("http://localhost:3001/frases", dados, trocaFrase)
     .fail(function() {
         $("#erro").toggle();
         setTimeout(function() {

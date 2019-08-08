@@ -13,8 +13,19 @@ $(function() {
     inicializaMarcadores();
     desabilitaBusca();
     atualizaPlacar();
+
     $(".botao-remover").click(removeLinha);
+
     botaoRestart.click(reiniciaJogo); /* .on("click", ) */
+
+    $("#usuarios").selectize({
+        create: true,
+        sortField: 'text'
+    });
+
+    $(".tooltip").tooltipster({
+        trigger: "custom"
+    });
 });
 
 function desabilitaBusca(){
